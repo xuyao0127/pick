@@ -5,6 +5,9 @@ PICK 2.0
 Python 3
 
 ## Run
+On Linux/macOS, you can use `chmod +x pick.py` to give executive permission
+to run this script without the prifixing `python` command.
+
 ```
 python pick.py [command]
 ```
