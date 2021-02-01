@@ -16,10 +16,12 @@ class Resturants:
             self.resturants = json.loads(file.read())
         except:
             self.resturants = {}
+        file.close()
 
     def save(self):
         file = open(self.filename, "w")
         file.write(json.dumps(self.resturants, sort_keys=True, indent=4, separators=(',', ': ')))
+        file.close()
 
     def add(self, name):
         new_weight = 1
