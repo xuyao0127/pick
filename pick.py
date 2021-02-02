@@ -5,7 +5,7 @@ import json
 import random
 random.seed()
 
-class Resturants:
+class Restaurants:
     def __init__(self, filename):
         self.filename = filename
         if os.path.exists(self.filename):
@@ -13,35 +13,35 @@ class Resturants:
         else:
             file = open(self.filename, "x")
         try:
-            self.resturants = json.loads(file.read())
+            self.restaurants = json.loads(file.read())
         except:
-            self.resturants = {}
+            self.restaurants = {}
         file.close()
 
     def save(self):
         file = open(self.filename, "w")
-        file.write(json.dumps(self.resturants, sort_keys=True, indent=4, separators=(',', ': ')))
+        file.write(json.dumps(self.restaurants, sort_keys=True, indent=4, separators=(',', ': ')))
         file.close()
 
     def add(self, name):
         new_weight = 1
         found = False
-        for r in self.resturants:
+        for r in self.restaurants:
             if r == name:
                 print(name + " already in the list")
                 found = True
                 break
-            if self.resturants[r] > new_weight:
+            if self.restaurants[r] > new_weight:
                 new_weight = r[0]
         if not found:
-            self.resturants[name] = new_weight
+            self.restaurants[name] = new_weight
             print(name + " added to the list")
 
     def remove(self, name):
         found = False
-        for r in self.resturants:
+        for r in self.restaurants:
             if r == name:
-                del(self.resturants[r])
+                del(self.restaurants[r])
                 print(name + " removed from the list")
                 found = True
                 break
@@ -50,38 +50,38 @@ class Resturants:
 
     def pick(self):
         bag = []
-        for r in self.resturants:
-            for _ in range(self.resturants[r]):
+        for r in self.restaurants:
+            for _ in range(self.restaurants[r]):
                 bag.append(r)
         p = bag[random.randrange(len(bag))]
-        for r in self.resturants:
+        for r in self.restaurants:
             if p != r:
-                self.resturants[r] += 1
-        self.resturants[p] = 1
+                self.restaurants[r] += 1
+        self.restaurants[p] = 1
         print(p + " is picked")
 
     def reset(self):
-        for r in self.resturants:
-            self.resturants[r] = 1
+        for r in self.restaurants:
+            self.restaurants[r] = 1
         print("list reseted")
         self.list();
 
     def list(self):
-        print(str(len(self.resturants)) + " resturants in the list")
-        for r in self.resturants:
-            print("{0:20s} {1:2d}".format(r, self.resturants[r]))
+        print(str(len(self.restaurants)) + " restaurants in the list")
+        for r in self.restaurants:
+            print("{0:20s} {1:2d}".format(r, self.restaurants[r]))
         
 
 if __name__ == "__main__":
-    resturants = Resturants("resturants.json")
+    restaurants = Restaurants("restaurants.json")
     if sys.argv[1] == "add":
-        resturants.add(sys.argv[2])
+        restaurants.add(sys.argv[2])
     elif sys.argv[1] == "remove":
-        resturants.remove(sys.argv[2])
+        restaurants.remove(sys.argv[2])
     elif sys.argv[1] == "pick":
-        resturants.pick()
+        restaurants.pick()
     elif sys.argv[1] == "list":
-        resturants.list()
+        restaurants.list()
     elif sys.argv[1] == "reset":
-        resturants.reset()
-    resturants.save()
+        restaurants.reset()
+    restaurants.save()
