@@ -12,35 +12,35 @@ to run this script without the prifixing `python` command.
 python pick.py [command]
 ```
 
-### Add a resturant
+### Add a restaurant
 ```
 python pick.py add [name]
 ```
-Add [name] to the list. New resturant's weight will be the same as the highest one in the list.
+Add [name] to the list. New restaurant's weight will be the same as the highest one in the list.
 
-### Remove a resturant
+### Remove a restaurant
 ```
 python pick.py remove [name]
 ```
 Remove [name] to the list.
 
-### Pick a resturant
+### Pick a restaurant
 ```
 python pick.py pick
 ```
-Pick a resturant the list.
+Pick a restaurant the list.
 
-### List resturants
+### List restaurants
 ```
 python pick.py list
 ```
-List all added resturants and its weight.
+List all added restaurants and its weight.
 
-### Reset resturants' weights
+### Reset restaurants' weights
 ```
 python pick.py reset
 ```
-Reset all resturants' weights to 1.
+Reset all restaurants' weights to 1.
 
 ## Manual config
-The script will automatically generates a config file "resturants.json". You can update or backup the file manually. The key is resturant's name and the value is the weight (larger than 0)
+The script will automatically generates a config file "restaurants.json". You can update or backup the file manually. The key is restaurant's name and the value is the weight (larger than 0)
